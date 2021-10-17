@@ -30,8 +30,12 @@ function padString(str, strLength, addSymb, checkAdd){
                 return addSymb + str;
             };
 
-            if(strLength < str.length){
+            if(str.length > strLength ){
                 return str.substr(str.length - 1);
+            }
+
+            if(str.length = strLength){
+                return padString(str, strLength, addSymb = null, checkAdd);
             }
         }
     }else{
