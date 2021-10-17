@@ -7,21 +7,39 @@ function padString(str, strLength, addSymb, checkAdd){
         return `Error!Number of symbols is missing!`;
     }else if(isNaN(strLength)){
         return `Error!It's not a Number`;
+    }else if(strLength.length() !== 1 ){
+        return `Only 1 symbol!!`;
     };
 
     if(addSymb === null || addSymb === ""){
         return `Error!Symbol is missing!`;
     };
 
-    if(checkAdd === null ){
-        return `Error!Check is missing!`;
-    }else if(checkAdd === ""){
-        return padString(str, strLength, addSymb, checkAdd === right);
-    };
+    if(checkAdd === true ){
+        for(i = 0 ;i < strLength; i++){
+            if(str < strLength){
+                let right = str + addSymb;
+                return right;
+            };
 
-    strLength = [length.str];
+            if(str > strLength){
+                str.substr(str.length - 1);
+            };
+        }
+    }
+
+    if(checkAdd === false){
+        return addSymb + str;
+    }
+
+    if(checkAdd === null){
+        return padString(str, strLength, addSymb, checkAdd = right);
+    }
+
+    str.length = strLength;
 
 };
+
 
 let str = prompt(`Введите строку:`);
 
@@ -29,4 +47,6 @@ let strLength = +prompt(`Введите желаемое количество с
 
 let addSymb = prompt(`Введите необходимый символ:`);
 
-let checkAdd = prompt(`Добавить символ справа/слева?`);
+let checkAdd = confirm(`Добавить символ справа - ok, слева - cancel`);
+
+const result = console.log(padString(str, strLength, addSymb, checkAdd));
